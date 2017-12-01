@@ -7,7 +7,7 @@ return [
     /*
      * Here goes the application name.
      */
-    'name' => 'Laravel Zero',
+    'name' => 'Advent of Code 2017',
 
     /*
      * Here goes the application version.
@@ -31,7 +31,7 @@ return [
     /*
      * If true, scheduler commands will be available.
      */
-    'with-scheduler' => true,
+    'with-scheduler' => false,
 
     /*
      * Here goes the application list of Laravel Service Providers.
