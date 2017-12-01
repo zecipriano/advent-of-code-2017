@@ -11,20 +11,27 @@ class Captcha
         $this->string = $string;
     }
 
-    public function resolve(): int
+    public function resolveNext(): int
+    {
+        $next = new SimpleNext(\strlen($this->string));
+        return $this->resolve($next);
+    }
+
+    public function resolveHalfwayAround(): int
+    {
+        $next = new HalfwayAroundNext(\strlen($this->string));
+        return $this->resolve($next);
+    }
+
+    private function resolve(NextIndex $next): int
     {
         $sum = 0;
         $stringArray = str_split($this->string);
-        $lastIndex = \count($stringArray) - 1;
 
         foreach ($stringArray as $index => $char) {
-            $nextChar = $stringArray[0];
+            $nextIndex = $next->nextIndex($index);
 
-            if ($index < $lastIndex) {
-                $nextChar = $stringArray[$index + 1];
-            }
-
-            if ($char === $nextChar) {
+            if ($char === $stringArray[$nextIndex]) {
                 $sum += (int)$char;
             }
         }
