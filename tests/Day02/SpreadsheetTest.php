@@ -20,4 +20,18 @@ class SpreadsheetTest extends TestCase
 
         $this->assertEquals(18, $spreadsheet->checksum());
     }
+
+    /** @test */
+    public function it_calculates_the_division_checksum()
+    {
+        $spreadsheetValues = [
+            [5, 9, 2, 8],
+            [9, 4, 7, 3],
+            [3, 8, 6, 5]
+        ];
+
+        $spreadsheet = new Spreadsheet($spreadsheetValues);
+
+        $this->assertEquals(9, $spreadsheet->divisionChecksum());
+    }
 }

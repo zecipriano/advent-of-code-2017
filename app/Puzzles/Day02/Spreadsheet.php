@@ -21,4 +21,15 @@ class Spreadsheet
 
         return $checksum;
     }
+
+    public function divisionChecksum(): int
+    {
+        $checksum = 0;
+
+        foreach ($this->array as $line) {
+            $checksum += (new Values($line))->divisionResult();
+        }
+
+        return $checksum;
+    }
 }

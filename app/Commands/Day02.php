@@ -35,8 +35,10 @@ class Day02 extends Command
 
             $spreadsheet = new Spreadsheet($spreadsheetValues);
             $checksum = $spreadsheet->checksum();
+            $divisionChecksum = $spreadsheet->divisionChecksum();
 
             $this->info("The first puzzle answer is $checksum.");
+            $this->info("The second puzzle answer is $divisionChecksum.");
         } catch (\RuntimeException $e) {
             $this->error('File not found or not readable.');
         }
